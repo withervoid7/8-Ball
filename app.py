@@ -12,13 +12,16 @@ def index():
 
 @app.route("/8-Ball", methods = ["POST"])
 def Ball():
-    r=random.choice("yes","maybe","no")
+    r=random.choice(["yes","maybe","no"])
     if r == "yes":
-        return random.choice("As I see it, yes","Most likely","Outlook good","Yes")
+        ra=random.choice(["As I see it, yes","Most likely","Outlook good","Yes"])
+        return render_template("index.html",rez=ra)
     elif r == "maybe":
-        return random.choice("Reply hazy, try again","Ask again later","Better not tell you now","Cannot predict now")
-    else:
-        return random.choice("Don't count on it","My reply is no","Outlook not so good","Very doubtful")
+        ra=random.choice(["Reply hazy, try again","Ask again later","Better not tell you now","Cannot predict now"])
+        return render_template("index.html",rez=ra)
+    elif r == "no":
+        ra=random.choice(["Don't count on it","My reply is no","Outlook not so good","Very doubtful"])
+        return render_template("index.html",rez=ra)
 
 app.run(debug=True)
 
